@@ -3,10 +3,12 @@ package bd.gov.ansarvdpbank.emicalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,9 +35,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loanAmount = findViewById(R.id.loanAmount);
+        loanAmount.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
         interest = findViewById(R.id.interest);
+        interest.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
         year = findViewById(R.id.year);
+        year.setInputType(InputType.TYPE_CLASS_NUMBER);
+
         month = findViewById(R.id.month);
+        month.setInputType(InputType.TYPE_CLASS_NUMBER);
 
         btnClear = findViewById(R.id.btnClear);
 
@@ -74,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
             lInterestPayable.setText(String.valueOf(TotalInterest));
             lTotalPayment.setText(String.valueOf(totalPayment2));
         }catch (NumberFormatException exception){
-            lLoanAmount.setText("Invalid input. Please enter valis numeric value");
+            //lLoanAmount.setText("অনুগ্রহপূর্বক সকল ফিল্ডে সঠিক সংখ্যা প্রদান করুন।");
+            Toast.makeText(this, "অনুগ্রহপূর্বক সকল ফিল্ডে সঠিক সংখ্যা প্রদান করুন।", Toast.LENGTH_LONG).show();
         }
 
         btnClear.setOnClickListener(new View.OnClickListener() {
