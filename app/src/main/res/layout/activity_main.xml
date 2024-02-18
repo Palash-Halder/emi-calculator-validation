@@ -5,21 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
 
-    <TextView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="EMI Calculator"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#FDF4F4"
-        android:background="#398F3D"/>
+        android:orientation="horizontal"
+        android:background="#CB398F3D"
+        android:padding="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/im1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/blogo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EMI Calculator"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FDF4F4"
+            />
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -55,7 +73,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="2dp"
-        android:text="Interest in Month"
+        android:text="Rate of Interest"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -124,8 +142,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        >
+        android:paddingRight="5dp">
 
         <EditText
             android:id="@+id/year"
@@ -133,9 +150,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:hint="বছর দিন"
-            android:textSize="18sp"/>
+            android:inputType="number"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/month"
@@ -143,11 +160,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
             android:hint="মাস দিন"
-            android:textSize="18sp"/>
+            android:inputType="number"
+            android:textSize="18sp" />
 
     </LinearLayout>
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -163,7 +184,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="Clear" />
+            android:text="Clear"
+            android:backgroundTint="#398F3D"
+            />
 
         <Button
             android:id="@+id/btnTotal"
@@ -172,7 +195,9 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:onClick="btnSum"
-            android:text="Loan Summary" />
+            android:text="Loan Summary"
+            android:backgroundTint="#398F3D"
+            />
     </LinearLayout>
 
     <TextView

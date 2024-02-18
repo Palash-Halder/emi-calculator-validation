@@ -2,6 +2,7 @@ package bd.gov.ansarvdpbank.emicalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import android.view.inputmethod.InputMethodManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,15 +80,28 @@ public class MainActivity extends AppCompatActivity {
             double TotalInterest = sum * yearExchange - loanAmount1;
             double totalPayment2 = loanAmount1 + TotalInterest;
 
-            lEmi.setText(String.valueOf(sum));
+//          // Previous Code:
+            /**
+             * lEmi.setText(String.valueOf(sum));
+             * lTenure.setText(String.valueOf(yearExchange)+" Month");
+             * lLoanAmount.setText(String.valueOf(loanAmount1));
+             * lInterestPayable.setText(String.valueOf(TotalInterest));
+             * lTotalPayment.setText(String.valueOf(totalPayment2));
+             */
+
+            // Coding Edited for two digit decimal Points
+            lEmi.setText(String.format("%.2f", sum));
             lTenure.setText(String.valueOf(yearExchange)+" Month");
-            lLoanAmount.setText(String.valueOf(loanAmount1));
-            lInterestPayable.setText(String.valueOf(TotalInterest));
-            lTotalPayment.setText(String.valueOf(totalPayment2));
+            lLoanAmount.setText(String.format("%.2f", loanAmount1));
+            lInterestPayable.setText(String.format("%.2f", TotalInterest));
+            lTotalPayment.setText(String.format("%.2f", totalPayment2));
         }catch (NumberFormatException exception){
             //lLoanAmount.setText("অনুগ্রহপূর্বক সকল ফিল্ডে সঠিক সংখ্যা প্রদান করুন।");
             Toast.makeText(this, "অনুগ্রহপূর্বক সকল ফিল্ডে সঠিক সংখ্যা প্রদান করুন।", Toast.LENGTH_LONG).show();
         }
+
+        InputMethodManager inm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        inm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
             lEmi.setText("");
             lTenure.setText("");
-            loanAmount.setText("");
+            lLoanAmount.setText("");
             lInterestPayable.setText("");
             lTotalPayment.setText("");
 
